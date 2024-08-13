@@ -1,0 +1,36 @@
+---
+import Service from "../components/cards/Service.astro";
+import Container from "../components/shared/Container.astro";
+import Paragraph from "../components/shared/Paragraph.astro";
+import Title from "../components/shared/Title.astro";
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/sections/Hero.astro';
+import { services } from "../utils/kontakt.ts";
+
+
+type ServicesProps = {
+    title: string;
+    description: string;
+    icon: string
+};
+
+
+---
+<Layout title="Kontakt">
+	<main class="flex flex-col gap-y-20 md:gap-y-32 overflow-hidden">
+		<section id="services">
+            <Container className="relative pt-32 lg:pt-36">
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                    {
+                            services.map((service: ServicesProps) => {
+                            return (
+                                    <Service title={service.title} description={service.description} icon={service.icon}>
+                                    </Service>
+                                    );
+                            })
+                    }
+                </div>
+            </Container>
+        </section>
+	</main>
+</Layout>
